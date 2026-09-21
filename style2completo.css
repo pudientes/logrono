@@ -1,0 +1,932 @@
+/* --- ESTILOS GENERALES --- */
+
+/* Fuentes y colores */
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 10;
+  background-color: #f9fafb; /* Blanco roto */
+  color: #333;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #F8F8F0;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;  
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header .logo a {
+  font-size: clamp(0.9rem, 3vw, 1.5rem);
+  font-weight: lighter;
+  color: #333;
+  font-family: 'Great Vibes', cursive;
+  text-decoration: none;
+}
+
+header .nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+header .nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: lighter;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+header .nav a:hover {
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+/* Icono hamburguesa */
+.menu-icon {
+  display: none;
+  font-size: clamp(1.2rem, 4vw, 4rem);
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%); /* 💡 centra verticalmente */
+  z-index: 2000;
+}
+
+/* Para escritorio */
+section {
+  scroll-margin-top: 130px; /* altura del header en escritorio */
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 80px; /* altura del header en móvil */
+  }
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+  background: linear-gradient(rgba(250,218,221,0.6), rgba(250,218,221,0.6)),
+              url('Portada.jpeg') no-repeat center center/cover;
+  /* background-attachment: fixed; */
+  color: #333;
+  padding: 20px;
+  padding-top: 130px;
+}
+
+.hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 10;
+  font-size: 3rem;
+}
+
+/* Save the date */
+.save-date-section {
+  text-align: center;
+  padding: 20px 20px 0px 20px;
+  background-color: #f9fafb;
+  margin-bottom: 0px;
+}
+
+.save-date-content h2 {
+  font-size: 2.2rem;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.save-date-text {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.save-date-date {
+  font-size: 1.8rem;
+  font-weight: lighter;
+  color: #333; 
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+
+.save-date-deco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+  width: 100%;
+  filter: brightness(0) saturate(100%) invert(58%) sepia(10%) saturate(1050%) hue-rotate(75deg) brightness(90%) contrast(90%);
+}
+
+.save-date-deco img {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.sticker {
+    width: 180px;
+    height: auto;
+}
+
+/* Sección de anuncio */
+.announcement-section {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  /* margin-left: 10vw;
+  margin-right: 10vw; */
+  background-color: #f9fafb;
+  padding: 0 10vw 5vh 10vw;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.announcement-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.announcement-content p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.9rem); /* tamaño mínimo, relativo, máximo */
+  line-height: 1.8;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  padding-top : 15px;
+}
+
+/* ITINERARIO */
+.timeline {
+  padding: 2vw 4vw;
+  text-align: center;
+  background: #f9fafb;
+  color: #333;
+  /* margin-bottom: 5vh; */
+  /* overflow-x: auto; 🔹 permite desplazamiento si no cabe */
+}
+
+.timeline h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 2vw;
+  color: #333;
+  text-align: center;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  width: 90vw; /* mínimo 700px, se adapta después */
+  margin: 0 auto;
+  padding: 0 2vw;
+  flex-wrap: nowrap; /* 🔹 evita que se apilen */
+  gap: 3vw;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.timeline-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height:  min(1px, 0.1vw); 
+  background: #333;
+  z-index: 3;
+}
+
+.timeline-item {
+  position: relative;
+  text-align: center;
+  flex: 1 1 auto; /* ✅ proporcional */
+  padding: 0 1vw;
+  z-index: 1;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1px, 0.1vw); 
+  height: 4vw;
+  background: #333;
+  z-index: 1;
+}
+
+.timeline-item .icon {
+  width: clamp(50px, 8vw, 80px);
+  height: clamp(50px, 8vw, 80px);
+  margin: 6vw auto 0 auto;
+  z-index: 2;
+}
+
+.timeline-item .icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.timeline-item .icon .icon-aperitivo {
+  width: 180%;
+  height: 95%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item h3 {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  margin-bottom: 0.5vw;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+}
+
+.timeline-item p {
+  font-size: clamp(0.9rem, 1.2vw, 2rem);
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+}
+
+
+
+/* MAPA 2 COLUMNAS */
+.locations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 4vw, 6rem); /* espacio proporcional entre columnas */
+  padding: clamp(0.5rem, 2vw, 2rem) clamp(1rem, 4vw, 2rem) 0 clamp(1rem, 4vw, 2rem);
+  justify-content: center;
+  background-color: #f9fafb;
+  color: #333;
+  padding-bottom: 5vh; /* espacio interno con color */
+}
+
+.location {
+  flex: 1 1 clamp(200px, 45%, 500px); /* escala proporcional pero no menor de 200px ni mayor de 500px */
+  text-align: center;
+  max-width: clamp(300px, 45%, 500px); /* máximo adaptable */
+  margin-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.location h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  font-size: clamp(1.15rem, 3vw, 2rem); /* escala según ancho */
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  color: #333;
+}
+
+.location h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  font-size: clamp(1rem, 2vw, 1.2rem); /* escalable */
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
+  color: #333;
+}
+
+.location-img {
+  width: 85%;           /* ancho proporcional al contenedor */
+  height: auto;         /* altura proporcional a la imagen original */
+  aspect-ratio: 4 / 3;  /* mantener la misma proporción siempre */
+  object-fit: cover; 
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+  transition: transform 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-container {
+  position: relative;         /* necesario para el iframe absoluto */
+  width: clamp(180px, 75%, 700px);  /* escala proporcional y tiene mínimo/máximo */
+  aspect-ratio: 16 / 9;       /* mantiene proporción 16:9 */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 0 auto;             /* centra el mapa */
+}
+
+.map-container iframe {
+  position: absolute;         /* ocupa todo el contenedor */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* TRANSPORTE: asegurar que los mapas en la sección de transporte se muestren en una sola columna
+   y tengan un ancho similar a los mapas de la sección principal en pantallas de escritorio */
+#transporte .location {
+  display: block; /* mantener bloque para que aparezcan en columna */
+  width: clamp(200px, 45%, 500px); /* igual que otras .location */
+  max-width: clamp(300px, 45%, 500px);
+  margin: 0.75rem auto; /* centrar y separar verticalmente */
+  box-sizing: border-box;
+}
+
+/* El map-container debe rellenar el ancho de su .location y mantener la proporción 16:9 */
+#transporte .map-container {
+  width: 100%;
+  max-width: 500px; /* coincidir con el ancho máximo de la .location en desktop */
+  aspect-ratio: 16 / 9;
+}
+
+
+
+/* BOTON FORMULARIO */
+.boton-formulario {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #6b936f;
+    color: #f9fafb;
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-decoration: none; /* Por si lo usas en <a> */
+}
+
+/* Efecto hover */
+.boton-formulario:hover {
+    background-color: #6b936f;
+    transform: translateY(-2px);
+}
+
+/* Efecto al hacer clic */
+.boton-formulario:active {
+    background-color: #537356;
+    transform: translateY(0);
+}
+
+
+
+/* HOTELES */
+.hotels-section {
+  background-color: #f9fafb;
+  padding: 5px;
+  text-align: center;
+  color: #2c3e50;  
+
+  padding: 5vh 10vw 5vh 10vw;
+}
+
+.hotels-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hotels-content h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 2vw;
+  color: #333;
+  text-align: center;
+}
+
+.hotels-content p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.9rem); /* tamaño mínimo, relativo, máximo */
+  line-height: 1.8;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Galería */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 17vw);
+  /* height controlled via aspect-ratio on the .gallery-item so all cards match */
+  justify-content: center;
+  gap: 20px;  
+  background-color: #f9fafb;
+  /* margin-bottom: 20px; */
+  padding-left: clamp(10px, 5%, 20px);  /* mínimo 10px, máximo 20px, relativo a ancho */
+  padding-right: clamp(10px, 5%, 20px);
+  /* padding-bottom: 350px; */
+}
+
+.gallery-item {
+  position: relative;
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* force same visual block size for all hotels */
+  margin-top: 15px;  
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+  filter: brightness(70%);
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  width: 100%;
+  padding: 8px 15px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 1vw;
+}
+
+/* Cada tarjeta de la galería: imagen + leyenda */
+.gallery-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* make the .gallery-item stretch to full column width */
+  text-align: center;
+}
+
+.gallery-caption {
+  margin-top: 8px;
+  font-style: italic;
+  color: #333;
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+  max-width: 100%;
+  padding: 0 6px;
+}
+
+/* Normalizar espaciado entre secciones de galería (evita gap extra
+   cuando hay varias secciones .gallery una debajo de otra) */
+.gallery {
+  margin: 0;
+  padding: 0;
+}
+
+/* Separación consistente debajo de cada grid */
+.gallery-grid {
+  padding-bottom: 20px;
+}
+
+
+/* FOOTER */
+.footer {
+  background-color: #F8F8F0;
+  color: #333;
+  padding: 20px 20px;
+  text-align: center;
+  /* margin-top: 50px; */
+}
+
+/* Neutralizar estilo de enlaces telefónicos creados por iOS/Safari */
+a[href^="tel"] {
+  color: inherit;
+  text-decoration: none;
+  cursor: text;
+}
+a[href^="tel"]:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Aumentar espaciado lateral para forzar salto de línea antes en pantallas estrechas */
+.footer-container {
+  padding-left: clamp(1rem, 6vw, 3rem);
+  padding-right: clamp(1rem, 6vw, 3rem);
+  box-sizing: border-box;
+}
+
+.footer-container .logo {
+  font-size: 2rem;
+  font-weight: lighter;
+  margin-bottom: 5px;
+  font-family: 'Great Vibes', cursive;
+}
+
+.footer-container p {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Contactos (footer y sección de contacto) */
+.footer-contacts, .contact-contacts {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 8px auto 0 auto;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  color: #333;
+  width: 100%;
+  max-width: 720px; /* evita que el bloque se haga demasiado ancho */
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  gap: 1rem; /* un poco más de separación entre los elementos */
+}
+.footer-contacts a, .contact-contacts a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 400;
+}
+.footer-contacts a:hover, .contact-contacts a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+.footer-contacts .sep, .contact-contacts .sep {
+  color: #666;
+  margin: 0 6px;
+}
+
+/* Sección contacto */
+.contact-section {
+  background-color: #f9fafb;
+  padding: 3vh 10vw;
+  text-align: center;
+  color: #333;
+}
+.contact-section h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 100;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.5rem;
+}
+.contact-section p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.2rem);
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+
+
+/* --- MEDIA QUERIES PARA TABLET/MÓVIL --- */
+
+/* Ctrl + Shift + I
+Ctrl + Shift + M */
+
+
+/* Tablets: hasta 768px */
+@media (max-width: 768px) {
+  header {
+    position: fixed;
+  }
+
+  header .nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Mostrar el icono hamburguesa */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Menú oculto por defecto */
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* contenido pegado a la derecha */
+    position: absolute;
+    top: 100%; /* debajo del header */
+    right: 0;
+    background-color: #F8F8F0;
+    width: 70%; /* ancho del panel desplegable */
+    max-width: 150px;
+    padding: 10px 0;
+    box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    text-align: right;
+  }
+
+  .nav a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+  }
+
+  .nav a:hover {
+    background-color: #e8e8e0;
+  }
+
+  /* Cuando el checkbox está marcado → muestra el menú */
+  #menu-toggle:checked + .menu-icon + .nav {
+    transform: translateX(0);
+  }
+
+ .hero {
+    min-height: 40vh;
+  }
+
+  .save-date-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .save-date-date {
+    font-size: 1.5rem;
+  }
+
+  /* .timeline-container {
+    flex-direction: column;
+    align-items: center;
+  } */
+
+  .timeline-item {
+    flex: 1 1 100%;
+    padding: 10px 0;
+  }
+
+  /* .locations {
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 0;
+  }
+
+  .location {
+    flex: 1 1 100%;
+    max-width: 90%;
+  } */
+
+  .hotels-content h2 {
+    font-size: 1.7rem;
+  }
+
+  .hotels-content p {
+    font-size: 1rem;
+  }
+
+  .gallery-grid {
+  grid-template-columns: repeat(auto-fit,25vw);
+  /* grid-auto-rows: 140px; */
+  }
+
+  .overlay-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* Móviles pequeños: hasta 480px */
+@media (max-width: 480px) {
+  /* header {
+    padding: 10px 15px;
+  } */
+
+  /* header .logo a {
+    font-size: 1.2rem;
+  } */
+
+  header .nav ul {
+    gap: 8px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .save-date-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .save-date-date {
+    font-size: 1.3rem;
+  }
+
+  /* .timeline-item h3 {
+    font-size: 1rem;
+  } */
+
+  /* .timeline-item p {
+    font-size: 0.9rem;
+  } */
+
+  /* .locations {
+    gap: 20px;
+    padding: 10px 10px 0 10px;
+  } */
+
+  /* .location h2 {
+    font-size: 1.5rem;
+  } */
+
+  .location h3 {
+    font-size: 0.9rem;
+  }
+
+  /* .location-img {
+    width: 100%;
+    height: auto;
+  } */
+
+  .hotels-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .hotels-content p {
+    font-size: 0.95rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 50vw;
+    /* grid-auto-rows: 30vw; */
+  }
+
+  .overlay-text {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+
+  .btn-cta {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  /* Ocultar separador vertical en móviles pequeños para evitar líneas colgantes */
+  .footer-contacts .sep, .contact-contacts .sep {
+    display: none;
+  }
+
+  .footer-contacts, .contact-contacts {
+    gap: 0.5rem;
+    justify-content: center;
+  }
+}
+
+/* Forzar salto de línea antes: cuando la pantalla se estrecha (tablet pequeño) */
+@media (max-width: 640px) {
+  .contact-contacts a, .footer-contacts a {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .contact-contacts .sep, .footer-contacts .sep {
+    display: none;
+  }
+
+  .contact-contacts, .footer-contacts {
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+/* --- Auth overlay styles --- */
+/* overlay (cubre toda la pantalla) */
+/* .auth-overlay {
+  position: fixed;
+  inset: 0; 
+  background: rgba(10,10,10,1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  padding: 20px;
+}
+
+
+.auth-box {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  font-family: 'Quicksand', sans-serif;
+  color: #2c3e50;
+}
+
+.auth-box h2 {
+  margin: 0 0 8px 0;
+  font-weight: 500;
+  color: #4A7856;
+  font-size: 1.4rem;
+}
+
+.auth-box p { margin: 6px 0; font-size: 0.95rem; color: #444; }
+
+#auth-input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 10px;
+  border: 1px solid #e2e2e2;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#auth-input:focus {
+  border-color: #4A7856;
+  box-shadow: 0 0 0 4px rgba(74,120,86,0.08);
+}
+
+.auth-actions {
+  margin-top: 14px;
+}
+
+#auth-btn {
+  background: #4A7856;
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+#auth-btn:hover { opacity: 0.95; }
+
+.auth-error {
+  color: #bb2d3b;
+  margin-top: 12px;
+  min-height: 18px;
+  font-size: 0.9rem;
+}
+
+.auth-hint {
+  margin-top: 14px;
+  color: #888;
+  font-size: 0.85rem;
+} */
+

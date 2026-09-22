@@ -15,7 +15,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
-  background-color: #F8F8F0;
+  background-color: #722F37;
   box-sizing: border-box;
   width: 100%;
   position: fixed;  
@@ -27,8 +27,8 @@ header {
 header .logo a {
   font-size: clamp(0.9rem, 3vw, 1.5rem);
   font-weight: lighter;
-  color: #333;
-  font-family: 'Great Vibes', cursive;
+  color: #F8F8F0;
+  font-family: 'Quicksand', sans-serif;
   text-decoration: none;
 }
 
@@ -42,7 +42,7 @@ header .nav ul {
 
 header .nav a {
   text-decoration: none;
-  color: #333;
+  color: #F8F8F0;
   font-weight: lighter;
   font-size: 1.1rem;
   transition: color 0.3s ease, font-size 0.3s ease;
@@ -50,7 +50,7 @@ header .nav a {
 
 header .nav a:hover {
   font-size: 1.2rem;
-  color: #000000;
+  color: #F8F8F0;
 }
 
 #menu-toggle {
@@ -62,7 +62,7 @@ header .nav a:hover {
   display: none;
   font-size: clamp(1.2rem, 4vw, 4rem);
   cursor: pointer;
-  color: #333;
+  color: #F8F8F0;
   position: absolute;
   top: 50%;
   right: 15px;
@@ -98,8 +98,8 @@ section {
 }
 
 .hero h1 {
-  font-family: 'Great Vibes', cursive;
-  font-weight: 10;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 9000;
   font-size: 3rem;
 }
 
@@ -182,100 +182,183 @@ section {
 
 /* ITINERARIO */
 .timeline {
-  padding: 2vw 4vw;
-  text-align: center;
-  background: #f9fafb;
+  background: linear-gradient(180deg, #f8f5f2 0%, #f9fafb 100%);
+  padding: clamp(4rem, 7vw, 7rem) clamp(1rem, 5vw, 4rem);
   color: #333;
-  /* margin-bottom: 5vh; */
-  /* overflow-x: auto; 🔹 permite desplazamiento si no cabe */
+}
+
+.itinerary-shell {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.itinerary-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: #722F37;
+  font-size: 0.72rem;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .timeline h2 {
+  margin: 0;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 100;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  margin-bottom: 2vw;
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.08em;
   color: #333;
   text-align: center;
 }
 
-.timeline-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+.itinerary-day-list {
   position: relative;
-  width: 90vw; /* mínimo 700px, se adapta después */
+  display: grid;
+  gap: 1.6rem;
+  max-width: 760px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 2vw;
-  flex-wrap: nowrap; /* 🔹 evita que se apilen */
-  gap: 3vw;
-  z-index: 2;
   box-sizing: border-box;
 }
 
-.timeline-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height:  min(1px, 0.1vw); 
-  background: #333;
-  z-index: 3;
-}
-
-.timeline-item {
+.itinerary-day {
   position: relative;
-  text-align: center;
-  flex: 1 1 auto; /* ✅ proporcional */
-  padding: 0 1vw;
-  z-index: 1;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(1px, 0.1vw); 
-  height: 4vw;
-  background: #333;
-  z-index: 1;
-}
-
-.timeline-item .icon {
-  width: clamp(50px, 8vw, 80px);
-  height: clamp(50px, 8vw, 80px);
-  margin: 6vw auto 0 auto;
-  z-index: 2;
-}
-
-.timeline-item .icon svg {
   width: 100%;
-  height: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(114, 47, 55, 0.12);
+  border-radius: 28px;
+  padding: 1.75rem;
+  box-sizing: border-box;
+  box-shadow: 0 14px 35px rgba(30, 30, 30, 0.06);
+  text-align: center;
 }
 
-.timeline-item .icon .icon-aperitivo {
-  width: 180%;
-  height: 95%;
-  position: relative;
+.day-marker {
+  position: absolute;
   left: 50%;
+  top: 1.5rem;
   transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #722F37, #8b4a51);
+  color: #F8F8F0;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(114,47,55,0.2);
+  font-size: 1.2rem;
 }
 
-.timeline-item h3 {
-  font-size: clamp(1rem, 1.5vw, 1.3rem);
-  margin-bottom: 0.5vw;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 100;
+.itinerary-day-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(114,47,55,0.12);
+  text-align: center;
 }
 
-.timeline-item p {
-  font-size: clamp(0.9rem, 1.2vw, 2rem);
+.day-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: #722F37;
+  font-weight: 700;
+}
+
+.itinerary-day h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-weight: 300;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 100;
+  color: #333;
+  text-align: center;
+}
+
+.itinerary-events {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  max-width: 560px;
+  text-align: center;
+}
+
+.itinerary-events li {
+  position: relative;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0;
+  text-align: center;
+}
+
+.itinerary-events li::before {
+  display: none;
+}
+
+.event-time {
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: #722F37;
+  font-weight: 700;
+  text-align: center;
+}
+
+.itinerary-events p {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  font-weight: 300;
+  color: #333;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .itinerary-day-list {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .itinerary-day {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem 0.9rem 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .itinerary-day-list::before {
+    left: 50%;
+  }
+
+  .day-marker {
+    width: 42px;
+    height: 42px;
+    font-size: 1rem;
+    top: 1.2rem;
+  }
+
+  .itinerary-events {
+    max-width: 100%;
+  }
 }
 
 
@@ -369,10 +452,13 @@ section {
 
 /* BOTON FORMULARIO */
 .boton-formulario {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     padding: 12px 24px;
-    background-color: #6b936f;
-    color: #f9fafb;
+    background-color: #722F37;
+    color: #F8F8F0;
     font-size: 16px;
     font-weight: 300;
     border-radius: 8px;
@@ -380,17 +466,26 @@ section {
     cursor: pointer;
     transition: 0.3s ease;
     text-decoration: none; /* Por si lo usas en <a> */
+    font-family: 'Quicksand', sans-serif;
+    box-shadow: 0 4px 10px rgba(114, 47, 55, 0.2);
+    line-height: 1.2;
+}
+
+button.boton-formulario {
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 /* Efecto hover */
 .boton-formulario:hover {
-    background-color: #6b936f;
+    background-color: #710c17;
     transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(114, 47, 55, 0.25);
 }
 
 /* Efecto al hacer clic */
 .boton-formulario:active {
-    background-color: #537356;
+    background-color: #430109;
     transform: translateY(0);
 }
 
@@ -518,8 +613,8 @@ section {
 
 /* FOOTER */
 .footer {
-  background-color: #F8F8F0;
-  color: #333;
+  background-color: #722F37;
+  color: #F8F8F0;
   padding: 20px 20px;
   text-align: center;
   /* margin-top: 50px; */
@@ -552,7 +647,7 @@ a[href^="tel"]:hover {
   font-size: 2rem;
   font-weight: lighter;
   margin-bottom: 5px;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .footer-container p {
@@ -645,7 +740,7 @@ Ctrl + Shift + M */
     position: absolute;
     top: 100%; /* debajo del header */
     right: 0;
-    background-color: #F8F8F0;
+    background-color: #722F37;
     width: 70%; /* ancho del panel desplegable */
     max-width: 150px;
     padding: 10px 0;
@@ -669,7 +764,7 @@ Ctrl + Shift + M */
   .nav a {
     display: block;
     padding: 10px 20px;
-    color: #333;
+    color: #F8F8F0;
     text-decoration: none;
     font-size: 1.1rem;
     transition: background 0.2s;

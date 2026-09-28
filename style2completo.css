@@ -5,7 +5,7 @@ body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
   font-weight: 10;
-  background-color: #f9fafb; /* Blanco roto */
+  background-color: #F8F8F0; /* Blanco roto */
   color: #333;
 }
 
@@ -107,7 +107,7 @@ section {
 .save-date-section {
   text-align: center;
   padding: 20px 20px 0px 20px;
-  background-color: #f9fafb;
+  background-color: #F8F8F0;
   margin-bottom: 0px;
 }
 
@@ -159,7 +159,7 @@ section {
   margin-bottom: 0px;
   /* margin-left: 10vw;
   margin-right: 10vw; */
-  background-color: #f9fafb;
+  background-color: #F8F8F0;
   padding: 0 10vw 5vh 10vw;
   text-align: center;
   color: #2c3e50;
@@ -182,7 +182,7 @@ section {
 
 /* ITINERARIO */
 .timeline {
-  background: linear-gradient(180deg, #f8f5f2 0%, #f9fafb 100%);
+   background-color: #F8F8F0; /*linear-gradient(180deg, #f8f5f2 0%, #f9fafb 100%); */
   padding: clamp(4rem, 7vw, 7rem) clamp(1rem, 5vw, 4rem);
   color: #333;
 }
@@ -207,11 +207,11 @@ section {
 }
 
 .timeline h2 {
-  margin: 0;
+  margin: 0 0 2rem;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 300;
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 0.08em;
+  font-weight: 100;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.04em;
   color: #333;
   text-align: center;
 }
@@ -243,7 +243,7 @@ section {
 .day-marker {
   position: absolute;
   left: 50%;
-  top: 1.5rem;
+  top: 1.8rem;
   transform: translateX(-50%);
   width: 52px;
   height: 52px;
@@ -262,8 +262,8 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  margin: 2.5rem 0 1rem;
+  gap: 0.8rem;
+  margin: 3.2rem 0 1rem;
   padding-bottom: 0.9rem;
   border-bottom: 1px solid rgba(114,47,55,0.12);
   text-align: center;
@@ -370,7 +370,7 @@ section {
   gap: clamp(1rem, 4vw, 6rem); /* espacio proporcional entre columnas */
   padding: clamp(0.5rem, 2vw, 2rem) clamp(1rem, 4vw, 2rem) 0 clamp(1rem, 4vw, 2rem);
   justify-content: center;
-  background-color: #f9fafb;
+  background-color: #F8F8F0;
   color: #333;
   padding-bottom: 5vh; /* espacio interno con color */
 }
@@ -513,7 +513,7 @@ button.boton-formulario {
 
 /* HOTELES */
 .hotels-section {
-  background-color: #f9fafb;
+  background-color: #F8F8F0;
   padding: 5px;
   text-align: center;
   color: #2c3e50;  
@@ -551,7 +551,7 @@ button.boton-formulario {
   /* height controlled via aspect-ratio on the .gallery-item so all cards match */
   justify-content: center;
   gap: 20px;  
-  background-color: #f9fafb;
+  background-color: #F8F8F0;
   /* margin-bottom: 20px; */
   padding-left: clamp(10px, 5%, 20px);  /* mínimo 10px, máximo 20px, relativo a ancho */
   padding-right: clamp(10px, 5%, 20px);
@@ -710,7 +710,7 @@ a[href^="tel"]:hover {
 
 /* Sección contacto */
 .contact-section {
-  background-color: #f9fafb;
+  background-color: #F8F8F0;
   padding: 3vh 10vw;
   text-align: center;
   color: #333;

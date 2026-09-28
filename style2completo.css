@@ -378,7 +378,7 @@ section {
 .location {
   flex: 1 1 clamp(200px, 45%, 500px); /* escala proporcional pero no menor de 200px ni mayor de 500px */
   text-align: center;
-  max-width: clamp(300px, 45%, 500px); /* máximo adaptable */
+  max-width: clamp(320px, 60%, 760px); /* máximo adaptable */
   margin-bottom: clamp(1rem, 2vw, 2rem);
 }
 
@@ -414,7 +414,7 @@ section {
 
 .map-container {
   position: relative;         /* necesario para el iframe absoluto */
-  width: clamp(180px, 75%, 700px);  /* escala proporcional y tiene mínimo/máximo */
+  width: min(100%, 720px);    /* más grande, pero sin desbordar */
   aspect-ratio: 16 / 9;       /* mantiene proporción 16:9 */
   border-radius: 15px;
   overflow: hidden;
@@ -434,18 +434,38 @@ section {
 /* TRANSPORTE: asegurar que los mapas en la sección de transporte se muestren en una sola columna
    y tengan un ancho similar a los mapas de la sección principal en pantallas de escritorio */
 #transporte .location {
-  display: block; /* mantener bloque para que aparezcan en columna */
-  width: clamp(200px, 45%, 500px); /* igual que otras .location */
-  max-width: clamp(300px, 45%, 500px);
-  margin: 0.75rem auto; /* centrar y separar verticalmente */
+  display: block;
+  width: min(100%, 720px);
+  max-width: 720px;
+  margin: 0.75rem auto;
   box-sizing: border-box;
 }
 
-/* El map-container debe rellenar el ancho de su .location y mantener la proporción 16:9 */
 #transporte .map-container {
   width: 100%;
-  max-width: 500px; /* coincidir con el ancho máximo de la .location en desktop */
-  aspect-ratio: 16 / 9;
+  max-width: 720px;
+  aspect-ratio: 16 / 10;
+  margin: 0 auto;
+}
+
+#transporte .map-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  #transporte .location {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #transporte .map-container {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 16 / 11;
+  }
 }
 
 

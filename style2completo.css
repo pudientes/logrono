@@ -958,6 +958,21 @@ Ctrl + Shift + M */
   }
 }
 
+@media (orientation: landscape) and (max-height: 500px) and (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: minmax(0, min(65vw, 560px));
+    justify-content: center;
+  }
+
+  .gallery-item {
+    aspect-ratio: 16 / 9;
+  }
+
+  .overlay-text {
+    font-size: 1.3rem;
+  }
+}
+
 
 
 
@@ -1044,4 +1059,3 @@ Ctrl + Shift + M */
   color: #888;
   font-size: 0.85rem;
 } */
-

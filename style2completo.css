@@ -127,7 +127,7 @@ body.compact-mode .full-nav-link {
     position: absolute;
     top: 100%;
     right: 0;
-    width: min(200px, 85vw);
+    width: min(180px, 85vw);
     box-sizing: border-box;
     padding: 10px 0;
     background-color: #722F37;
@@ -948,7 +948,7 @@ Ctrl + Shift + M */
     top: 100%; /* debajo del header */
     right: 0;
     background-color: #722F37;
-    width: min(220px, 85vw);
+    width: min(180px, 85vw);
     box-sizing: border-box;
     padding: 10px 0;
     box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.15);
@@ -1188,7 +1188,7 @@ body.welcome-gate-open {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(32, 18, 19, 0.94);
+  background: rgba(32, 18, 19, 0.89);
 }
 
 .welcome-gate[hidden],

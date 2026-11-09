@@ -1188,7 +1188,7 @@ body.welcome-gate-open {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(32, 18, 19, 0.82);
+  background: rgba(32, 18, 19, 0.94);
 }
 
 .welcome-gate[hidden],

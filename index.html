@@ -15,56 +15,6 @@
   <link rel="stylesheet" href="style2completo.css">
 </head>
 
-<!-- 
-<script>
-  // Cambia aquí la clave deseada:
-  document.addEventListener('DOMContentLoaded', function() {
-  const CORRECT_PASSWORD = "1234"; // <- cámbiala por la tuya
-
-  const overlay = document.getElementById('auth-overlay');
-  const input = document.getElementById('auth-input');
-  const btn = document.getElementById('auth-btn');
-  const err = document.getElementById('auth-error');
-
-  // Si ya autenticado en localStorage, oculta overlay
-  if (sessionStorage.getItem('site_authenticated') === '1') {
-    overlay.style.display = 'none';
-  } else {
-    overlay.style.display = 'flex';
-    input.focus();
-  }
-
-  function tryAuth() {
-    const val = input.value || '';
-    if (val === CORRECT_PASSWORD) {
-      sessionStorage.setItem('site_authenticated', '1'); // persiste
-      overlay.style.display = 'none';
-      // opcional: limpiar el input
-      input.value = '';
-      err.textContent = '';
-    } else {
-      err.textContent = 'Clave incorrecta. Inténtalo de nuevo.';
-      input.value = '';
-      input.focus();
-    }
-  }
-
-  // eventos
-  btn.addEventListener('click', tryAuth);
-  input.addEventListener('keydown', function(e){
-    if (e.key === 'Enter') tryAuth();
-  });
-
-  // Evitar que tab navegue fuera del modal (accesibilidad básica)
-  document.addEventListener('focus', function(evt){
-    if (overlay.style.display !== 'none' && !overlay.contains(evt.target)) {
-      evt.stopPropagation();
-      input.focus();
-    }
-  }, true);
-})();
-</script> -->
-
 <script>
 function añadirCalendario() {
     const evento = [
@@ -101,24 +51,34 @@ function añadirCalendario() {
 
 
 
-<body>
-
-<!-- Auth overlay: pega esto al inicio del <body> -->
-<!-- <div id="auth-overlay" class="auth-overlay">
-  <div class="auth-box" role="dialog" aria-modal="true" aria-labelledby="auth-title">
-    <h2 id="auth-title">Acceso invitados</h2>
-    <p>Introduce la clave para ver la web.</p>
-
-    <input id="auth-input" type="password" placeholder="Introduce la clave" aria-label="Clave">
-    <div class="auth-actions">
-      <button id="auth-btn">Entrar</button>
+<body class="welcome-gate-open">
+  <div class="welcome-gate" id="welcome-gate">
+    <div class="welcome-gate-card" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-describedby="welcome-password-description">
+      <p class="welcome-kicker">ACCESO</p>
+      <div id="password-step">
+        <h1 id="welcome-title">Acceso privado</h1>
+        <p id="welcome-password-description">Estamos de obras, necesitas la contraseña para continuar.</p>
+        <form class="welcome-password-form" id="welcome-password-form">
+          <label for="welcome-password">Contraseña</label>
+          <input id="welcome-password" name="password" type="password" autocomplete="off" required>
+          <p class="welcome-password-error" id="welcome-password-error" role="alert" hidden></p>
+          <button class="welcome-button welcome-button--yes" type="submit">Entrar</button>
+        </form>
+      </div>
+      <div id="welcome-question-step" hidden>
+        <h1 id="welcome-question-title">Antes de entrar...</h1>
+        <p id="welcome-question">Esto es un sitio web para adultos, confirma tu edad.</p>
+        <div class="welcome-actions" id="welcome-actions">
+          <button class="welcome-button welcome-button--yes" id="welcome-yes" type="button">Sí, tengo 18 años o más</button>
+          <button class="welcome-button welcome-button--no" id="welcome-no" type="button">No, pero tengo permiso de Ignacio</button>
+        </div>
+        <div class="welcome-denied" id="welcome-denied" role="alert" hidden>
+          <p>Haciendote pasar por menor, háztelo mirar... </p>
+          <button class="welcome-button welcome-button--yes" id="welcome-enter" type="button">Entrar de todos modos</button>
+        </div>
+      </div>
     </div>
-
-    <p id="auth-error" class="auth-error" aria-live="polite"></p>
-
-    <p class="auth-hint">¿No tienes clave? Contacta con los novios 😊</p>
   </div>
-</div> -->
 
 
 
@@ -126,6 +86,7 @@ function añadirCalendario() {
   <!-- HEADER -->
   <header>
     <div class="logo"><a href="#">Logroño</a></div>
+    <button class="compact-toggle" id="compact-toggle" type="button" aria-pressed="false">Vista compacta</button>
 
      <!-- Botón hamburguesa -->
     <input type="checkbox" id="menu-toggle" />
@@ -134,12 +95,15 @@ function añadirCalendario() {
     <div class="nav">
       <nav>
         <ul>
-          <li><a href="#itinerario">Itinerario</a></li>
-          <li><a href="#hoteles">Hotel</a></li>
-          <li><a href="#bodega">Bodega</a></li>
-          <li><a href="#transporte">Ruta Laurel</a></li>
-          <li><a href="#tricount">Tricount</a></li>
-          <!-- <li><a href="#convocatoria">Convocatoria</a></li> -->
+          <li class="full-nav-link"><a href="#itinerario">Itinerario</a></li>
+          <li class="compact-nav-link"><a href="#hoteles">Hotel</a></li>
+          <li class="compact-nav-link"><a href="#bodega">Bodega</a></li>
+          <li class="compact-nav-link"><a href="#comida">Comida</a></li>
+          <li class="compact-nav-link"><a href="#transporte">Ruta Laurel</a></li>
+          <li class="compact-nav-link"><a href="#contacto">Contacto</a></li>
+          <li class="full-nav-link"><a href="#tricount">Tricount</a></li>
+          <li class="full-nav-link"><a href="#convocatoria">Convocatoria</a></li>
+          <li class="full-nav-link"><a href="#formulario">Formulario</a></li>
         </ul>
       </nav>
     </div>
@@ -182,7 +146,7 @@ function añadirCalendario() {
 </div>
 </section>
 
-
+<!-- 
 <section class="hotels-section">
   <div class="hotels-content">
       <h2>Antes de seguir guarda la fecha</h2>
@@ -191,7 +155,7 @@ function añadirCalendario() {
         <a >Añadir al calendario</a>
       </button>
     </div>
-</section>
+</section> -->
 
   <!-- ITINERARIO -->
 <section class="timeline" id="itinerario">
@@ -217,9 +181,10 @@ function añadirCalendario() {
       </div>
       <ul class="itinerary-events">
         <li><span class="event-time">Mañana</span><p>Derpertarse, prepararse y desayuno por la zona. Tiempo hasta las 10:30 que pediremos taxis.</p></li>
-        <li><span class="event-time">Bodega + Comida</span><p>Visita a la bodega a las 11:00 en Laguardia. Comidita en el pueblo, con la calma y con el vino.</p></li>
-        <li><span class="event-time">Tarde</span><p>Visita por Laguardia (o wine bars recomendados) y volver en taxis. Plantear posible siesta antes del jaleo.</p></li>
-        <li><span class="event-time">Noche</span><p>Ruta de Laurel y lo que surja, la noche promete. Preparad vuestras mejores galas (Juan la camisa de leñador que hace tiempo que no la vemos).</p></li>
+        <li><span class="event-time">Bodega</span><p>Visita a la bodega a las 11:00 en Laguardia.</p></li>
+        <li><span class="event-time">Comida</span><p>14:30 Gastro Bar Doña Blanca. Comidita en el pueblo, con la calma y con el vino.</p></li>
+        <li><span class="event-time">Tarde</span><p>Visita por Laguardia (o wine bars recomendados) y volver en taxis.</p></li>
+        <li><span class="event-time">Noche</span><p>Ruta de Laurel y lo que surja, la noche promete.</p></li>
       </ul>
     </article>
 
@@ -234,7 +199,7 @@ function añadirCalendario() {
           <br>- 12:00 ST María del Palacio y ST María la Redonda (familias).
           <br>- 12:30 Santiago el Real y San Bartolomé.
           <br>- 13:00 ST María la redonda. </p></li>
-        <li><span class="event-time">Comida</span><p>Gestionar comida del domingo.</p></li>
+        <li><span class="event-time">Comida</span><p>Como dicen algunos VV.</p></li>
       </ul>
     </article>
   </div>
@@ -288,6 +253,30 @@ function añadirCalendario() {
      </div>
 </section>
 
+<!-- COMIDA -->
+<section class="hotels-section" id="comida">
+  <div class="hotels-content">
+    <h2>COMIDA</h2>
+    <p style="font-style: italic;">
+      No es la Finca Machoenia en la que alguno ya ha estado ni mucho menos, pero tenemos
+      a las 14:30 11 personas a nombre de Iñigo en el Doña Blanca.
+    </p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <a href="https://artparty.wixsite.com/donablancagastrobar" class="gallery-item">
+        <img src="Comida.avif" alt="Foto del restaurante de la comida">
+        <div class="overlay-text">Gastro Bar<br>Doña Blanca</div>
+      </a>
+      <p style="font-style: italic;">
+      </p> 
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2078.269083377707!2d-2.585015590403312!3d42.55282282434683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4ff8573121c5cd%3A0xcb33ef42c775f765!2sGastro%20Bar%20Do%C3%B1a%20Blanca!5e0!3m2!1ses!2ses!4v1793833394579!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>  
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScqMQ1hz9pAAlgt5qK35OL8RHIf6qPjuSHsA0_5HriH6TszeQ/viewform?embedded=true" width="640" height="552" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe> -->
 
@@ -329,14 +318,100 @@ function añadirCalendario() {
 </section>
 
 
+<!-- CONVOCATORIA -->
+<section class="convocatoria-section" id="convocatoria">
+  <div class="convocatoria-intro">
+    <h2>CONVOCATORIA DEL MISTER (TIO MI)</h2>
+    <p>Estamos todos convocados, no hay excusas de cuidar a Jesús, de al final no me puedo pasar a saludar, de la comunión del pez de mi primo...
+      Se ha filtrado la lista de Mourinho y esto es lo que os puedo adelantar.
+    </p>
+  </div>
+  <div class="convocatoria-formacion">
+    <div class="convocatoria-linea convocatoria-linea--portero">
+      <h3>PORTERO</h3>
+      <p>Capitaneando en las farras, el que más titularidades tiene.</p>
+      <div class="convocatoria-jugadores convocatoria-jugadores--uno">
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-01.png" alt="Retrato de Nombre 01" loading="lazy">
+          <h4>Arocena</h4>
+        </article>
+      </div>
+    </div>
+
+    <div class="convocatoria-linea">
+      <h3>DEFENSA</h3>
+      <p>Aunque algunos lejos de retirarse, optan por ser el primer anillo del grupo, y no de NBA...</p>
+      <div class="convocatoria-jugadores convocatoria-jugadores--cuatro">
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-02.png" alt="Retrato de Nombre 02" loading="lazy">
+          <h4>Gastaminza</h4>
+        </article>
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-03.png" alt="Retrato de Nombre 03" loading="lazy">
+          <h4>Manrique</h4>
+        </article>
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-04.png" alt="Retrato de Nombre 04" loading="lazy">
+          <h4>Martín</h4>
+        </article>
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-05.png" alt="Retrato de Nombre 05" loading="lazy">
+          <h4>Andrés</h4>
+        </article>
+      </div>
+    </div>
+
+    <div class="convocatoria-linea">
+      <h3>MEDIOCAMPO</h3>
+      <p>El actual comando Madrid. Aunque esta vez les toca desplazarse, habrá visita a la capi en algún momento.</p>
+      <div class="convocatoria-jugadores convocatoria-jugadores--tres">
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-06.png" alt="Retrato de Nombre 06" loading="lazy">
+          <h4>Peio</h4>
+        </article>
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-07.png" alt="Retrato de Nombre 07" loading="lazy">
+          <h4>Aguerrea</h4>
+        </article>
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-08.png" alt="Retrato de Nombre 08" loading="lazy">
+          <h4>Estevas</h4>
+        </article>
+      </div>
+    </div>
+
+    <div class="convocatoria-linea">
+      <h3>DELANTEROS</h3>
+      <p>Almas libres, no hace falta comentar nada.</p>
+      <div class="convocatoria-jugadores convocatoria-jugadores--tres">
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-10.png" alt="Retrato de Nombre 10" loading="lazy">
+          <h4>Velasco</h4>
+        </article>
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-09.png" alt="Retrato de Nombre 09" loading="lazy">
+          <h4>Lucas</h4>
+        </article>
+        <article class="convocatoria-persona">
+          <img src="fotos/participante-11.png" alt="Retrato de Nombre 11" loading="lazy">
+          <h4>Inaxi</h4>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- Broma -->
 <section class="hotels-section" id="formulario">
   <div class="hotels-content">
     <h2>CONFIRMA TU ASISTENCIA</h2>
   </div>
   <div class="hotels-content">
-    <!-- <p style="font-style: italic;">¡No olvides confirmar tu asistencia!</p> -->
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" class="boton-formulario">Formulario</a>
+    <p style="font-style: italic;"> Esta vez sí, no os troleo. Además vienen un par de preguntas que me pidieron.
+                                    En lo que vais a cagar en el trabajo las respondéis, no os va a llevar más de 2 mins.
+    </p>
+    <a href="https://forms.gle/KpgaDREzPM7aDrfY8" class="boton-formulario">Formulario</a>
   </div>
 </section>
 
@@ -358,6 +433,8 @@ function añadirCalendario() {
       <a href="tel:+34941276090" aria-label="Teléfono novio">Hotel: 941 276 090</a>
             <span class="sep" aria-hidden="true">|</span>
       <a href="tel:+34945600826" aria-label="Teléfono novio">Bodega: 945 60 08 26</a>
+            <span class="sep" aria-hidden="true">|</span>
+      <a href="tel:+34612246965" aria-label="Teléfono novio">Comida: 612 246 965</a>
     </div>
   </div>
 </section>
@@ -379,12 +456,28 @@ function añadirCalendario() {
     const menuIcon = document.querySelector('.menu-icon');
     const nav = document.querySelector('header .nav');
     const links = document.querySelectorAll('nav a');
+    const compactToggle = document.getElementById('compact-toggle');
+    const COMPACT_MODE_KEY = 'logrono_compact_mode';
 
     function closeMenu() {
       if (menuToggle) {
         menuToggle.checked = false;
       }
     }
+
+    function setCompactMode(enabled) {
+      document.body.classList.toggle('compact-mode', enabled);
+      compactToggle.setAttribute('aria-pressed', String(enabled));
+      compactToggle.textContent = enabled ? 'Vista completa' : 'Vista compacta';
+      sessionStorage.setItem(COMPACT_MODE_KEY, enabled ? '1' : '0');
+    }
+
+    setCompactMode(sessionStorage.getItem(COMPACT_MODE_KEY) === '1');
+
+    compactToggle.addEventListener('click', () => {
+      setCompactMode(!document.body.classList.contains('compact-mode'));
+      closeMenu();
+    });
 
     links.forEach(link => {
       link.addEventListener('click', () => {
@@ -404,6 +497,110 @@ function añadirCalendario() {
         closeMenu();
       }
     });
+  </script>
+
+  <script>
+    const welcomeGate = document.getElementById('welcome-gate');
+    const passwordStep = document.getElementById('password-step');
+    const passwordForm = document.getElementById('welcome-password-form');
+    const passwordInput = document.getElementById('welcome-password');
+    const passwordError = document.getElementById('welcome-password-error');
+    const welcomeQuestionStep = document.getElementById('welcome-question-step');
+    const welcomeYes = document.getElementById('welcome-yes');
+    const welcomeNo = document.getElementById('welcome-no');
+    const welcomeActions = document.getElementById('welcome-actions');
+    const welcomeDenied = document.getElementById('welcome-denied');
+    const welcomeEnter = document.getElementById('welcome-enter');
+    const PASSWORD_HASH_BASE64 = 'Wb1ADJFpiXSUXO9TdATmJunBAbQEZ6tjNnls2Fmptow=';
+    const PASSWORD_ACCEPTED_KEY = 'logrono_password_accepted';
+    const WELCOME_ACCEPTED_KEY = 'logrono_welcome_accepted_v2';
+
+    function enterSite() {
+      sessionStorage.setItem(PASSWORD_ACCEPTED_KEY, '1');
+      sessionStorage.setItem(WELCOME_ACCEPTED_KEY, '1');
+      welcomeGate.hidden = true;
+      document.body.classList.remove('welcome-gate-open');
+    }
+
+    function showWelcomeQuestion() {
+      passwordStep.hidden = true;
+      welcomeQuestionStep.hidden = false;
+      welcomeGate.setAttribute('aria-describedby', 'welcome-question');
+      welcomeYes.focus();
+    }
+
+    if (sessionStorage.getItem(WELCOME_ACCEPTED_KEY) === '1') {
+      welcomeGate.hidden = true;
+      document.body.classList.remove('welcome-gate-open');
+    } else if (sessionStorage.getItem(PASSWORD_ACCEPTED_KEY) === '1') {
+      showWelcomeQuestion();
+    } else {
+      passwordInput.focus();
+    }
+
+    passwordForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      try {
+        const digest = await crypto.subtle.digest(
+          'SHA-256',
+          new TextEncoder().encode(passwordInput.value)
+        );
+        const expectedHash = Uint8Array.from(atob(PASSWORD_HASH_BASE64), (character) =>
+          character.charCodeAt(0)
+        );
+        const actualHash = new Uint8Array(digest);
+        const isCorrect = actualHash.length === expectedHash.length &&
+          actualHash.every((byte, index) => byte === expectedHash[index]);
+
+        if (!isCorrect) {
+          passwordError.textContent = 'Que no intentes, cuando esté listo os avisaré';
+          passwordError.hidden = false;
+          passwordInput.select();
+          return;
+        }
+
+        sessionStorage.setItem(PASSWORD_ACCEPTED_KEY, '1');
+        passwordInput.value = '';
+        passwordError.hidden = true;
+        showWelcomeQuestion();
+      } catch (error) {
+        console.error('No se pudo validar la contraseña.', error);
+        passwordError.textContent = 'No se pudo validar la contraseña en este navegador.';
+        passwordError.hidden = false;
+      }
+    });
+
+    welcomeYes.addEventListener('click', enterSite);
+    welcomeNo.addEventListener('click', () => {
+      welcomeActions.hidden = true;
+      welcomeDenied.hidden = false;
+      welcomeEnter.focus();
+    });
+    welcomeEnter.addEventListener('click', enterSite);
+
+    welcomeGate.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const focusableElements = [...welcomeGate.querySelectorAll('input, button')]
+          .filter((button) => button.getClientRects().length > 0);
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    });
+
   </script>
 
   <!-- Efecto parallax -->

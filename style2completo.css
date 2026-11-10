@@ -1229,6 +1229,7 @@ body.welcome-gate-open {
   line-height: 1.6;
 }
 
+/* Estilos de la contraseña; se conservan para una posible reactivación.
 .welcome-password-form {
   display: grid;
   gap: 0.65rem;
@@ -1269,6 +1270,7 @@ body.welcome-gate-open {
   font-size: 0.9rem;
   text-align: center;
 }
+*/
 
 .welcome-actions {
   display: flex;

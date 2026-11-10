@@ -53,8 +53,9 @@ function añadirCalendario() {
 
 <body class="welcome-gate-open">
   <div class="welcome-gate" id="welcome-gate">
-    <div class="welcome-gate-card" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-describedby="welcome-password-description">
+    <div class="welcome-gate-card" role="dialog" aria-modal="true" aria-labelledby="welcome-question-title" aria-describedby="welcome-question">
       <p class="welcome-kicker">ACCESO</p>
+      <!-- Pantalla de contraseña desactivada temporalmente.
       <div id="password-step">
         <h1 id="welcome-title">Acceso privado</h1>
         <p id="welcome-password-description">Estamos de obras, necesitas la contraseña para continuar.</p>
@@ -65,7 +66,8 @@ function añadirCalendario() {
           <button class="welcome-button welcome-button--yes" type="submit">Entrar</button>
         </form>
       </div>
-      <div id="welcome-question-step" hidden>
+      -->
+      <div id="welcome-question-step">
         <h1 id="welcome-question-title">Antes de entrar...</h1>
         <p id="welcome-question">Esto es un sitio web para adultos, confirma tu edad.</p>
         <div class="welcome-actions" id="welcome-actions">
@@ -501,6 +503,33 @@ function añadirCalendario() {
 
   <script>
     const welcomeGate = document.getElementById('welcome-gate');
+    const welcomeYes = document.getElementById('welcome-yes');
+    const welcomeNo = document.getElementById('welcome-no');
+    const welcomeActions = document.getElementById('welcome-actions');
+    const welcomeDenied = document.getElementById('welcome-denied');
+    const welcomeEnter = document.getElementById('welcome-enter');
+    const WELCOME_ACCEPTED_KEY = 'logrono_welcome_accepted_v2';
+
+    function enterSite() {
+      sessionStorage.setItem(WELCOME_ACCEPTED_KEY, '1');
+      welcomeGate.hidden = true;
+      document.body.classList.remove('welcome-gate-open');
+    }
+
+    if (sessionStorage.getItem(WELCOME_ACCEPTED_KEY) === '1') {
+      welcomeGate.hidden = true;
+      document.body.classList.remove('welcome-gate-open');
+    } else {
+      welcomeYes.focus();
+    }
+
+    /*
+    ACCESO CON CONTRASEÑA DESACTIVADO TEMPORALMENTE.
+    El verificador se configuraba aquí como hash SHA-256, no como contraseña visible:
+    PASSWORD_HASH_BASE64 = 'Wb1ADJFpiXSUXO9TdATmJunBAbQEZ6tjNnls2Fmptow='; // Contraseña: GOXOKI
+    Para reactivarlo, descomenta también el bloque #password-step del HTML y el controlador
+    de contraseña que estaba en este script.
+
     const passwordStep = document.getElementById('password-step');
     const passwordForm = document.getElementById('welcome-password-form');
     const passwordInput = document.getElementById('welcome-password');
@@ -570,6 +599,7 @@ function añadirCalendario() {
         passwordError.hidden = false;
       }
     });
+    */
 
     welcomeYes.addEventListener('click', enterSite);
     welcomeNo.addEventListener('click', () => {
